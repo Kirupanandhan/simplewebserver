@@ -15,26 +15,44 @@ Serving the HTML pages.
 Testing the webserver
 
 ## PROGRAM:
-
+from http.server import HTTPServer, BaseHTTPRequestHandler
+content = """
 <!DOCTYPE html>
 <html>
 <head>
-<title>My webserver</title>
+<title>Top 5 Programming Languages:
+</title>
 </head>
 <body>
-<h1>The top five programming languages are:
+<h1>1. C++
+C++ is a programming language that extends the C programming language. It's a programming language that combines features from both low-level and high-level languages. The bulk of CAD applications use C++ interfaces. Since mechanical engineering is more closely related to robotics and automation, mechanical engineers can use a programming language like C++.
 </h1>
-A programming language is a formal language comprising a set of strings that produce various kinds of machine code output. ... Most programming languages consist of instructions for computers. There are programmable machines that use a set of specific instructions, rather than general programming languages. <br>
-
-1) Python<br>
-2)JavaScript<br>
-3)Java<br>
-4)PHP<br>
-5)C++<br>
+<h1>2. Javascript
+JavaScript is a well-known programming language on the internet. It's also known as the HTML programming language, and it's commonly used on the internet. JavaScript is an easy-to-learn programming language. In fact, it is less complicated than the majority of programming languages. Since HTML and CSS are the foundations of a beautiful website, web developers should learn this programming language as well.
+</h1>
+<h1>3. PHP
+PHP is widely used for server-side web creation when a website requests information from a server on a regular basis. Since PHP is an older programming language, it has a large user community that has developed frameworks, libraries, and automation tools to make it easier to use. Debugging PHP code is also easy.
+</h1>
+<h1>4. Python
+Python is a versatile software programming language that is ideal for writing scripts and is particularly useful in engineering projects for automating procedures. Python's key benefit is that it is easy to learn and understand compared to many other software programming languages. In a Python programme, you'd need about 5 times less code for any given function than you would in a Java or C++ programme. Although the precision of other languages is often needed, Python can help any project, from films to enterprise programmes, run more smoothly.
+</h1>
+<h1>5. Go
+Go was developed by Google as an efficient, readable, and convenient system-level programming language. It's suitable for distributed systems, which are spread over many networks and must communicate by sending messages to each other. Despite being a new language, Go has a large standards library and extensive documentation. It is primarily used in applications that require the processing of large amounts of data. Netflix, Twitch, and Uber are only a few of the companies that use Go for unique purposes.
+</h1>
 </body>
 </html>
-
-
+"""
+class myhandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        print("request received")
+        self.send_response(200)
+        self.send_header('content-type', 'text/html; charset=utf-8')
+        self.end_headers()
+        self.wfile.write(content.encode())
+server_address = ('',8080)
+httpd = HTTPServer(server_address,myhandler)
+print("my webserver is running...")
+httpd.serve_forever()
 
 ## OUTPUT:
 
