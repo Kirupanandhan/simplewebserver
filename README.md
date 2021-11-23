@@ -56,5 +56,9 @@ httpd.serve_forever()
 
 ## OUTPUT:
 
+![Screenshot (4)](https://user-images.githubusercontent.com/94386222/143053669-706d4d93-9b99-4efb-af51-5dccbf26813b.png)
+![Screenshot (3)](https://user-images.githubusercontent.com/94386222/143053739-8efae82e-503c-4c6e-b87a-a47ef80f9eb2.png)
+
 
 ## RESULT:
+The above webserver has been created and run sucessfully
